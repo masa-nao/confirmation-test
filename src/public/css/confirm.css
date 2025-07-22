@@ -1,0 +1,76 @@
+:root {
+  --main-color: #97837b;
+  --input-bg-color: #f6f6f6;
+  --input-color: #4b4747;
+  --placeholder-color: #c4bbb8;
+  --border-color: #ddd;
+  --error-color: #e00;
+  --white-color: #fff;
+}
+
+.confirm__container {
+  margin: 0 auto;
+  max-width: 60%;
+}
+
+.confirm-form {
+  padding: 0 100px;
+  width: 100%;
+}
+
+.confirm-table {
+  width: 100%;
+}
+
+.confirm-table__inner {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.confirm-table__row {
+  border: 1px solid var(--border-color);
+}
+
+.confirm-table__header,
+.confirm-table__item {
+  padding: 15px 50px;
+  text-align: left;
+}
+
+.confirm-table__header {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  width: 300px;
+}
+
+.span--first-name {
+  margin-left: 10px;
+}
+
+.confirm__button {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm__button-submit {
+  padding: 10px;
+  width: 90px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.confirm__button-fix {
+  position: absolute;
+  bottom: 8px;
+  right: 350px;
+  text-decoration: underline;
+  border: none;
+  background-color: var(--white-color);
+  color: var(--main-color);
+  font-size: 16px;
+}

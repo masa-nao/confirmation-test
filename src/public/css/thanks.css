@@ -1,0 +1,38 @@
+:root {
+  --main-color: #97837b;
+  --input-bg-color: #f6f6f6;
+  --white-color: #fff;
+}
+
+.thanks__container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.thanks__bg-message {
+  position: absolute;
+  color: var(--input-bg-color);
+  font-size: 200px;
+  font-weight: bold;
+  z-index: -1;
+}
+
+.thanks__message {
+  font-size: 1.8rem;
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.thanks__link {
+  position: absolute;
+  bottom: 41%;
+  padding: 5px 30px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  text-decoration: none;
+}

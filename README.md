@@ -31,9 +31,7 @@ Laravel環境構築
 - `php artisan key:generate`
 
 マイグレーション
-- `php artisan make:model Contact -m`
-- `php artisan make:model Category -m`
-- 作成された各モデルファイルにカラムの書き換え可能の記述
+- 各モデルとマイグレーションファイルの記述の確認（以下の記述があるか確認）
 ```
 # Contact.php
 protected $fillable = [
@@ -52,7 +50,6 @@ protected $fillable = [
 # Category.php
 protected $fillable = ['content'];
 ```
-- 次にマイグレーションファイルのupメソッドにカラムの設定の記述
 ```
 # xxxx_create_contacts_table.php
 public function up()
@@ -83,14 +80,13 @@ public function up()
     });
 }
 ```
-- モデルとマイグレーションファイルの記述ができたら以下のコマンドでマイグレーションを実行
+- 各モデルとマイグレーションファイルの記述が確認できたら以下のコマンドでマイグレーションを実行
 - `php artisan migrate`
 - phpMyAdminでテーブルが作成されているか確認する
 
 シーディング
 - ファクトリを使用し、contactsテーブルにダミーデータを35件作成
-- `php artisan make:factory ContactFactory`
-- 作成されたファクトリにモデルの読み込みとdifinitionメソッドの記述
+- ファクトリにモデルの読み込みとdifinitionメソッドの記述の確認（以下の記述があるか確認）
 ```
 # ContactFactory.php
 use App\Models\Contact;
@@ -113,7 +109,7 @@ public function definition()
     ];
 }
 ```
-- 次にシーダーファイルのrunメソッドの記述
+- 次にシーダーファイルのrunメソッドの記述の確認（以下の記述があるか確認）
 ```
 # ContactsTableSeeder.php
 use App\Models\Contact;
@@ -123,7 +119,7 @@ public function run()
         Contact::factory()->count(35)->create();
     }
 ```
-- categoriesテーブル(お問い合わせの種類)のダミーデータはシーダーファイルを使用し、以下5件のダミーデータを作成
+- categoriesテーブル(お問い合わせの種類)のダミーデータはシーダーファイルを使用し、以下5件のダミーデータを作成（以下の記述があるか確認）
 ```
 # CategoriesTableSeeder.php
 use App\Models\Category;
@@ -143,7 +139,7 @@ public function run()
     }
 }
 ```
-- `DatabaseSeeder.php` のrunメソッドに各シーダーファイルの呼び出しを設定
+- `DatabaseSeeder.php` のrunメソッドに各シーダーファイルの呼び出しを設定（以下の記述があるか確認）
 ```
 # DatabaseSeeder.php
 public function run()
@@ -154,11 +150,12 @@ public function run()
     ]);
 }
 ```
-- ファクトリとシーダーファイルの記述ができたら以下のコマンドでシーディングを実行
+- ファクトリとシーダーファイルの記述が確認できたら以下のコマンドでシーディングを実行
 - `php artisan db:seed`
 - phpMyAdminでテーブルにデータが挿入されているか確認する
 
 ## Fortify導入
+＊ すでにFortifyに関するファイルがあり記述済みなら、このFortify導入の工程は飛ばしてよい
 - PHPコンテナ内で、Fortifyでの認証に使用するマイグレーションファイルの作成とマイグレーションを実行
 - `composer require laravel/fortify`
 - `php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"`

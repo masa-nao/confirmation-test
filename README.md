@@ -18,6 +18,8 @@ Dockerセットアップ
 2. クローン後、リポジトリを配置したい任意のディレクトリに移動し、以下のコマンドを実行
 3. `docker-compose up -d --build`
 
+＊ コンテナ作成ができない場合、`Dockerfile` のPHPのバージョンの記述を `FROM php:8.1-fpm` と編集して再度ビルドしてください。
+
 ＊ MySQLは、OSによって起動しない場合があるので、それぞれのPCに合わせて `docker-compose.yml` ファイルを編集してください。
 
 ＊ クローン後、Laravel本体は `./src` ディレクトリに展開されています。
@@ -141,7 +143,7 @@ public function run()
     }
 }
 ```
-- DatabaseSeeder.phpのrunメソッドに各シーダーファイルの呼び出しを設定
+- `DatabaseSeeder.php` のrunメソッドに各シーダーファイルの呼び出しを設定
 ```
 # DatabaseSeeder.php
 public function run()
@@ -171,7 +173,7 @@ public function run()
 + App\Providers\FortifyServiceProvider::class,
 ```
 - 上記はアプリケーションの言語設定を英語enから日本語jaに変更し、providersにFortifyを登録することで、Fortifyを起動できるようにしている
-- 次に、app/Providers/ディレクトリ以下にあるFortifyServiceProvider.phpのbootメソッドの修正
+- 次に、app/Providers/ディレクトリ以下にある `FortifyServiceProvider.php` のbootメソッドの修正
 ```
 # FortifyServiceProvider.php
 public function boot(): void
@@ -193,7 +195,7 @@ public function boot(): void
     });
 }
 ```
-- RouteServiceProvider.phpのログイン後のリダイレクト先が/になるよう修正
+- `RouteServiceProvider.php` のログイン後のリダイレクト先が/になるよう修正
 ```
 # RouteServiceProvider.php
 public const HOME = '/';
@@ -201,7 +203,7 @@ public const HOME = '/';
 - Fortifyのエラー文を日本語表示にするために、PHPコンテナ内で以下のコマンドを実行
 - `composer require laravel-lang/lang:~7.0 --dev`
 - `cp -r ./vendor/laravel-lang/lang/src/ja ./resources/lang/`
-- resource/langディレクトリ以下に jaというディレクトリが作成されていれば成功
+- resource/langディレクトリ以下に `ja` ディレクトリが作成されていれば成功
 - 任意のコントローラとビューを作成し、認証に必要な機能を作成していく
 
 ## 使用技術(実行環境)
